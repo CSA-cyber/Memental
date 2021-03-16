@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2021-03-16T07:07:56.971Z" agent="5.0 (Windows)" etag="ua8SwjMv7dVMiwvxhJa2" version="14.4.7" type="device">
+<mxfile host="app.diagrams.net" modified="2021-03-16T07:13:45.053Z" agent="5.0 (Windows)" etag="QNTX_rxoFkqM8Fbe-9yd" version="14.4.7" type="device">
   <diagram id="mHvPj06DuG8STE6128NR" name="Page-1">
-    <mxGraphModel dx="1504" dy="644" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="881" dy="377" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -53,6 +53,12 @@
               <mxPoint x="495" y="493" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="aZo79vQU7bZKohtNO1JX-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="aZo79vQU7bZKohtNO1JX-2" target="aZo79vQU7bZKohtNO1JX-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aZo79vQU7bZKohtNO1JX-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aZo79vQU7bZKohtNO1JX-2" target="aZo79vQU7bZKohtNO1JX-93">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="aZo79vQU7bZKohtNO1JX-2" value="&lt;div&gt;Doctor&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="325" y="433" width="120" height="60" as="geometry" />
@@ -226,6 +232,12 @@
         </mxCell>
         <mxCell id="aZo79vQU7bZKohtNO1JX-87" value="Manage" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="537" y="62" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="aZo79vQU7bZKohtNO1JX-93" value="&lt;div&gt;Description&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540.5" y="469" width="76.5" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="aZo79vQU7bZKohtNO1JX-94" value="&lt;div&gt;Specialization&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="504" y="415" width="76.5" height="51" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
