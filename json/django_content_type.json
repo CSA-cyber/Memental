@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0928f"
+  },
+  "id": 1,
+  "app_label": "admin",
+  "model": "logentry"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09294"
+  },
+  "id": 2,
+  "app_label": "auth",
+  "model": "permission"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09295"
+  },
+  "id": 3,
+  "app_label": "auth",
+  "model": "group"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09296"
+  },
+  "id": 4,
+  "app_label": "auth",
+  "model": "user"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a3"
+  },
+  "id": 5,
+  "app_label": "contenttypes",
+  "model": "contenttype"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a8"
+  },
+  "id": 6,
+  "app_label": "sessions",
+  "model": "session"
+}]

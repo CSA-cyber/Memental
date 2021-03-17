@@ -1,0 +1,171 @@
+[{
+  "_id": {
+    "$oid": "6051af954c6e5e6ff0e0927e"
+  },
+  "id": 1,
+  "app": "contenttypes",
+  "name": "0001_initial",
+  "applied": {
+    "$date": "2021-03-17T07:28:21.747Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0927f"
+  },
+  "id": 2,
+  "app": "auth",
+  "name": "0001_initial",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.148Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09280"
+  },
+  "id": 3,
+  "app": "admin",
+  "name": "0001_initial",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.416Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09281"
+  },
+  "id": 4,
+  "app": "admin",
+  "name": "0002_logentry_remove_auto_add",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.456Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09282"
+  },
+  "id": 5,
+  "app": "admin",
+  "name": "0003_logentry_add_action_flag_choices",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.469Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09283"
+  },
+  "id": 6,
+  "app": "contenttypes",
+  "name": "0002_remove_content_type_name",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.494Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09284"
+  },
+  "id": 7,
+  "app": "auth",
+  "name": "0002_alter_permission_name_max_length",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.504Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09285"
+  },
+  "id": 8,
+  "app": "auth",
+  "name": "0003_alter_user_email_max_length",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.517Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09286"
+  },
+  "id": 9,
+  "app": "auth",
+  "name": "0004_alter_user_username_opts",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.529Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09287"
+  },
+  "id": 10,
+  "app": "auth",
+  "name": "0005_alter_user_last_login_null",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.544Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09288"
+  },
+  "id": 11,
+  "app": "auth",
+  "name": "0006_require_contenttypes_0002",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.550Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09289"
+  },
+  "id": 12,
+  "app": "auth",
+  "name": "0007_alter_validators_add_error_messages",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.562Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0928a"
+  },
+  "id": 13,
+  "app": "auth",
+  "name": "0008_alter_user_username_max_length",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.575Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0928b"
+  },
+  "id": 14,
+  "app": "auth",
+  "name": "0009_alter_user_last_name_max_length",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.588Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0928c"
+  },
+  "id": 15,
+  "app": "auth",
+  "name": "0010_alter_group_name_max_length",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.600Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0928d"
+  },
+  "id": 16,
+  "app": "auth",
+  "name": "0011_update_proxy_permissions",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.611Z"
+  }
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0928e"
+  },
+  "id": 17,
+  "app": "sessions",
+  "name": "0001_initial",
+  "applied": {
+    "$date": "2021-03-17T07:28:22.664Z"
+  }
+}]

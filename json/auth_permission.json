@@ -1,0 +1,193 @@
+[{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09290"
+  },
+  "id": 1,
+  "name": "Can add log entry",
+  "content_type_id": 1,
+  "codename": "add_logentry"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09291"
+  },
+  "id": 2,
+  "name": "Can change log entry",
+  "content_type_id": 1,
+  "codename": "change_logentry"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09292"
+  },
+  "id": 3,
+  "name": "Can delete log entry",
+  "content_type_id": 1,
+  "codename": "delete_logentry"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09293"
+  },
+  "id": 4,
+  "name": "Can view log entry",
+  "content_type_id": 1,
+  "codename": "view_logentry"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09297"
+  },
+  "id": 5,
+  "name": "Can add permission",
+  "content_type_id": 2,
+  "codename": "add_permission"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09298"
+  },
+  "id": 6,
+  "name": "Can change permission",
+  "content_type_id": 2,
+  "codename": "change_permission"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e09299"
+  },
+  "id": 7,
+  "name": "Can delete permission",
+  "content_type_id": 2,
+  "codename": "delete_permission"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0929a"
+  },
+  "id": 8,
+  "name": "Can view permission",
+  "content_type_id": 2,
+  "codename": "view_permission"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0929b"
+  },
+  "id": 9,
+  "name": "Can add group",
+  "content_type_id": 3,
+  "codename": "add_group"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0929c"
+  },
+  "id": 10,
+  "name": "Can change group",
+  "content_type_id": 3,
+  "codename": "change_group"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0929d"
+  },
+  "id": 11,
+  "name": "Can delete group",
+  "content_type_id": 3,
+  "codename": "delete_group"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0929e"
+  },
+  "id": 12,
+  "name": "Can view group",
+  "content_type_id": 3,
+  "codename": "view_group"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e0929f"
+  },
+  "id": 13,
+  "name": "Can add user",
+  "content_type_id": 4,
+  "codename": "add_user"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a0"
+  },
+  "id": 14,
+  "name": "Can change user",
+  "content_type_id": 4,
+  "codename": "change_user"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a1"
+  },
+  "id": 15,
+  "name": "Can delete user",
+  "content_type_id": 4,
+  "codename": "delete_user"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a2"
+  },
+  "id": 16,
+  "name": "Can view user",
+  "content_type_id": 4,
+  "codename": "view_user"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a4"
+  },
+  "id": 17,
+  "name": "Can add content type",
+  "content_type_id": 5,
+  "codename": "add_contenttype"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a5"
+  },
+  "id": 18,
+  "name": "Can change content type",
+  "content_type_id": 5,
+  "codename": "change_contenttype"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a6"
+  },
+  "id": 19,
+  "name": "Can delete content type",
+  "content_type_id": 5,
+  "codename": "delete_contenttype"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a7"
+  },
+  "id": 20,
+  "name": "Can view content type",
+  "content_type_id": 5,
+  "codename": "view_contenttype"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092a9"
+  },
+  "id": 21,
+  "name": "Can add session",
+  "content_type_id": 6,
+  "codename": "add_session"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092aa"
+  },
+  "id": 22,
+  "name": "Can change session",
+  "content_type_id": 6,
+  "codename": "change_session"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092ab"
+  },
+  "id": 23,
+  "name": "Can delete session",
+  "content_type_id": 6,
+  "codename": "delete_session"
+},{
+  "_id": {
+    "$oid": "6051af964c6e5e6ff0e092ac"
+  },
+  "id": 24,
+  "name": "Can view session",
+  "content_type_id": 6,
+  "codename": "view_session"
+}]
