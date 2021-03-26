@@ -23,7 +23,8 @@ class User(models.Model):
     is_doctor = models.BooleanField(default=False)
     name = models.CharField(max_length=50)
     email = models.EmailField()
-    password = models.CharField(max_length=50, validators=[MinLengthValidator(8)])
+    password = models.CharField(max_length=50, validators=[
+                                MinLengthValidator(8)])
     age = models.PositiveIntegerField()
     phone = models.CharField(max_length=15,
                              validators=[MinLengthValidator(8)], blank=True, null=True)
@@ -60,7 +61,6 @@ class Appointment(models.Model):
         return f'Product:{str(self.product)}\tCustomer: {str(self.customers)}'
 
 
-
 class UserMessage(models.Model):
     user = models.ForeignKey(
         'User', on_delete=models.SET_NULL, null=True)
@@ -75,4 +75,3 @@ class UserMessage(models.Model):
 
     def __str__(self):
         return self.user.name
-    
