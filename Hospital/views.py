@@ -5,14 +5,19 @@ from .models import *
 
 
 def index(request):
-    context = {}
-    return render(request, 'hospital.html', context)
+    patient = ""
+    if request.user.is_authenticated:
+        email = request.user.email
 
-
-
+    return render(request, 'hospital.html', {'patient': patient})
 
 
 def show_doctors(request):
     doctors = Doctor.objects.all()
     context = {'doctors': doctors}
     return render(request, 'doctors.html', context)
+
+def doctor(request, pk):
+    doctor = Doctor.objects.get(id=pk)
+    context = {'doctor': doctor}
+    return render(request, 'doctor.html', context)

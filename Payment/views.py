@@ -22,7 +22,8 @@ def approval_status(request):
 
 def make_appointment(request):
     if request.user.is_authenticated:
-        patient = request.user.patient
+        email = request.user.email
+        patient = Patient.objects.get(email=email)
         doctor = Doctor.objects.get(id=1)
         appointment, created = Appointment.objects.get_or_create(
             patient=patient, doctor=doctor, disease_details='Fine')

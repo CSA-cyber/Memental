@@ -5,19 +5,25 @@
 
 <div class="row">
     {% for doctor in doctors %}
-    <div class="col-lg-4">
-        <div class="box-element product">
-            <img class="thumbnail" src="{{doctor.get_img}}" alt="">
-            <br>
-            <br>
-            <h6><strong>{{doctor.name}}</strong></h6>
-            <hr>
-            <button data-doctor="{{doctor.id}}" data-action="add" class="btn btn-outline-success add-btn make-appointment">Take Appointment</button>
-            <a href="#" class="btn btn-outline-success">View</a>
-            <h4 style="display: inline-block; float: right">৳{{doctor.fees|floatformat:0}}/10min</h4>
+    <div class="card mb-3 box-element product mt-4">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                <img src="{{doctor.get_img}}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{doctor.name}}</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional
+                        content. This content is a little bit longer.</p>
+
+                </div>
+                <a class="btn btn-success" href="{% url 'doctor' doctor.id %}">View</a>
+            </div>
         </div>
     </div>
     {% endfor %}
 </div>
+
 
 {% endblock content %}

@@ -1,17 +1,16 @@
 from Hospital.models import Patient
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from datetime import date
-from django.contrib.auth import login as auth_login
-from django.contrib.auth import logout as auth_logout
-from django.contrib.auth.forms import *
+from django.contrib import messages
 from .forms import *
 # Create your views here.
 
 
 def login_user(request):
     form = login_form()
-    
+    context = {}
     if request.method == 'POST':
         form = login_form(request.POST)
         if form.is_valid():
@@ -19,17 +18,21 @@ def login_user(request):
             password = form.cleaned_data['password']
             user = authenticate(request, username=email, password=password)
             if user:
-                auth_login(request, user)
+                login(request, user)
                 print('succes')
-                patient = Patient.objects.get(email=email)
                 return redirect('index')
             else:
-                print('not authorized')
-                return redirect('signup')
-        
-    
-    context = {'form': form}        
+                messages.info(request, 'Email and password did not match')
+                return redirect('login')
+
+    context = {'form': form}
     return render(request, 'login.html', context)
+
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, 'user logged out')
+    return render(request, 'hospital.html')
 
 
 def create_account(request):
@@ -41,18 +44,25 @@ def create_account(request):
         def calculate_age(born):
             today = date.today()
             return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
-        
+
         if form.is_valid():
-            name = form.cleaned_data['fname']
+            name = form.cleaned_data['name']
             email = form.cleaned_data['email']
+            if Patient.objects.filter(email=email).exists():
+                messages.info(request, 'Email already exists')
+                return redirect('doctors')
+
             password1 = form.cleaned_data['password1']
             password2 = form.cleaned_data['password2']
             age = form.cleaned_data['age']
             age = calculate_age(age)
             phone = form.cleaned_data['phone']
             address = form.cleaned_data['address']
-            patient = Patient.objects.create(name=name, email=email, password=password1, age=age, phone=phone, address=address)
-            patient.save()
+            user = User.objects.create_user(email, email, password1)
+            # user.save()
+            patient = Patient.objects.create(
+                user=user, name=name, email=email, password=password1, age=age, phone=phone, address=address)
+            # patient.save()
             return redirect('login')
 
     context = {'form': form}
