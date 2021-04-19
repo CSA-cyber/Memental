@@ -40,20 +40,30 @@ class User(PolymorphicModel):
 
 
 class Patient(User):
+    address = models.CharField(max_length=255, blank=True, null=True)
+
     credit_info = models.CharField(max_length=12,
                                    validators=[MinLengthValidator(12)], blank=True, null=True)
 
 
 class Doctor(User):
-    address = models.CharField(max_length=255, blank=True, null=True)
     fees = models.FloatField(validators=[MinValueValidator(0)])
     qualifications = models.TextField()
     availability = models.BooleanField(default=False)
-    desc = models.TextField()
+    desc = models.TextField(blank=True)
     specilization = models.CharField(max_length=255)
-    # profile_pic 
+    image = models.ImageField(upload_to='doctors/', null=True, blank=True)
 
-
+    @property
+    def get_img(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return '/images/placeholder.jpg'
+        
+    @property
+    def get_fees(self):
+        return int(self.fees+.5)
 
 # class UserMessage(models.Model):
 #     users = models.ForeignKey(

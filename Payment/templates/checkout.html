@@ -20,22 +20,10 @@
                     <p>Shipping Information:</p>
                     <hr>
                     <div class="form-field">
-                        <input class="form-control" type="text" name="address" placeholder="Address..">
-                    </div>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="city" placeholder="City..">
-                    </div>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="state" placeholder="State..">
-                    </div>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
-                    </div>
-                    <div class="form-field">
-                        <input class="form-control" type="text" name="country" placeholder="Zip code..">
+                        <input class="form-control" type="text" name="address" placeholder="Card Number">
                     </div>
                 </div>
-                    
+
                 <hr>
                 <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
             </form>
@@ -50,21 +38,19 @@
 
     <div class="col-lg-6">
         <div class="box-element" id="form-wrapper">
-            <a  class="btn btn-outline-dark" href="{% url 'appointments' %}">&#x2190; Back to making appointments</a>
+            <a class="btn btn-outline-dark" href="{% url 'appointments' %}">&#x2190; Back to making appointments</a>
 
             <hr>
-            <h3>Order Summary</h3>
+            <h3>Appointment Summary</h3>
             <hr>
 
             <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.jpg' %}"></div>
-                <div style="flex:2"><p>Doctor 1</p></div>
-                <div style="flex:1"><p>$20.00</p></div>
-                <div style="flex:1"><p>x2</p></div>
+                <div style="flex:2"><img class="row-image" src="{{appointment.doctor.get_img}}" alt=""></div>
+                <div style="flex:2">{{appointment.doctor.name}}<p></p>
+                </div>
             </div>
 
-            <h5>Appointments : 2</h5>
-            <h5>Total        : 2</h5>
+            <h5>Time : {{time}}</h5>
         </div>
     </div>
 </div>

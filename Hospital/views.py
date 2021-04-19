@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
@@ -12,5 +13,6 @@ def index(request):
 
 
 def show_doctors(request):
-    context = {}
-    return render(request, 'hospital.html', context)
+    doctors = Doctor.objects.all()
+    context = {'doctors': doctors}
+    return render(request, 'doctors.html', context)
