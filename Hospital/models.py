@@ -28,7 +28,7 @@ class User(PolymorphicModel):
     email = models.EmailField()
     password = models.CharField(max_length=50, validators=[
                                 MinLengthValidator(8)])
-    age = models.PositiveIntegerField()
+    birthdate = models.DateField(null=True)
     phone = models.CharField(max_length=15,
                              validators=[MinLengthValidator(8)], blank=True, null=True)
 
@@ -60,10 +60,14 @@ class Doctor(User):
             return self.image.url
         else:
             return '/images/placeholder.jpg'
-        
+
     @property
     def get_fees(self):
         return int(self.fees+.5)
+    
+    @property
+    def new_fees(self):
+        return int(self.fees*1.5+.5)
 
 # class UserMessage(models.Model):
 #     users = models.ForeignKey(

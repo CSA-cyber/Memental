@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from datetime import date
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .forms import *
 # Create your views here.
 
@@ -17,9 +19,10 @@ def login_user(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user = authenticate(request, username=email, password=password)
-            if user:
+            if user:                    
                 login(request, user)
-                print('succes')
+                if user.is_superuser:
+                    return HttpResponseRedirect(reverse('admin:index'))
                 return redirect('index')
             else:
                 messages.info(request, 'Email and password did not match')
@@ -32,7 +35,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, 'user logged out')
-    return render(request, 'hospital.html')
+    return render(request, 'index.html')
 
 
 def create_account(request):

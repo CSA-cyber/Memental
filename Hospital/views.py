@@ -9,7 +9,7 @@ def index(request):
     if request.user.is_authenticated:
         email = request.user.email
 
-    return render(request, 'hospital.html', {'patient': patient})
+    return render(request, 'index.html', {'patient': patient})
 
 
 def show_doctors(request):

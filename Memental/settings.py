@@ -115,7 +115,7 @@ TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -132,3 +132,6 @@ MEDIA_URL = 'images/'
 MEDIA_ROOT = BASE_DIR/'static/images/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+DATE_FORMAT = 'j N, Y'
+DATE_INPUT_FORMATS = ['%d-%m-%Y']

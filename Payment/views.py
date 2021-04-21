@@ -21,24 +21,22 @@ def approval_status(request):
 
 
 def make_appointment(request):
+    appointment = ""
     if request.user.is_authenticated:
         email = request.user.email
         patient = Patient.objects.get(email=email)
         doctor = Doctor.objects.get(id=1)
         appointment, created = Appointment.objects.get_or_create(
             patient=patient, doctor=doctor, disease_details='Fine')
-    else:
-        return appointment_views(request)
-        # return render(request, 'login.html')
 
     context = {'appointment': appointment}
-    return render(request, 'appointment.html', context)
+    return render(request, 'boooking_page.html', context)
 
 
-def appointment_views(request):
-    appointments = Appointment.objects.all()
-    context = {'appointments': appointments, 'amount': len(appointments)}
-    return render(request, 'appointment.html', context)
+# def appointment_views(request):
+#     appointments = Appointment.objects.all()
+#     context = {'appointments': appointments, 'amount': len(appointments)}
+#     return render(request, 'appointment.html', context)
 
 
 def checkout(request):
