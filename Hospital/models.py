@@ -31,6 +31,7 @@ class User(PolymorphicModel):
     birthdate = models.DateField(null=True)
     phone = models.CharField(max_length=15,
                              validators=[MinLengthValidator(8)], blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -40,8 +41,6 @@ class User(PolymorphicModel):
 
 
 class Patient(User):
-    address = models.CharField(max_length=255, blank=True, null=True)
-
     credit_info = models.CharField(max_length=12,
                                    validators=[MinLengthValidator(12)], blank=True, null=True)
 
@@ -49,6 +48,7 @@ class Patient(User):
 class Doctor(User):
     fees = models.FloatField(validators=[MinValueValidator(0)])
     qualifications = models.TextField()
+    edutation = models.TextField(blank=True, null=True)
     availability = models.BooleanField(default=False)
     desc = models.TextField(blank=True)
     specilization = models.CharField(max_length=255)
@@ -64,7 +64,7 @@ class Doctor(User):
     @property
     def get_fees(self):
         return int(self.fees+.5)
-    
+
     @property
     def new_fees(self):
         return int(self.fees*1.5+.5)

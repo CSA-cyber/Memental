@@ -1,6 +1,8 @@
 from django import forms
 from django.conf import settings
 from datetime import date
+
+from django.forms import widgets
 # class CreateUserForm(UserCreationForm):
 #     class Meta:
 #         model = User
@@ -22,10 +24,22 @@ class patient_create_form(forms.Form):
 
     bdate = forms.DateField(
         label="Birthdate", input_formats=settings.DATE_INPUT_FORMATS, widget=forms.SelectDateWidget(attrs={'class': 'form-date'}, years=[*range(date.today().year)][::-1]))
-    # bdate = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS, widget=forms.DateInput)
+    credit_card = forms.CharField(label="Credit Card", widget=forms.TextInput({'name':"additional", 'class':"additional", 'id':"additional", 'placeholder': "Credit card"}), required=not True)
+    street_address = forms.CharField(widget=forms.TextInput({'name':"street", 'class':"street", 'id':"street", 'placeholder': "House + Street Number"}))
+    zip_code = forms.IntegerField(widget=forms.TextInput({'name':"zip", 'class':"zip", 'id':"zip", 'placeholder':"Zip Code"}))
+    district = forms.ChoiceField(choices=[('', 'District'),
+                                          ('Dhaka','Dhaka'),
+                                          ('Rajsahi', 'Rajsahi'),
+                                          ('Chittagong','Chittagong'),
+                                          ('Barishal', 'Barishal'),
+                                          ('Sylhet', 'Sylhet')
+                                         ])
+    phone_type = forms.ChoiceField(choices=[('', 'Phone'),
+                                            ('01', '01'), 
+                                            ('02', '02')
+                                           ])
     phone = forms.CharField(label="Phone no", widget=forms.TextInput(attrs={
                             'name': "phone", 'class': 'phone', 'id': "phone", 'placeholder': "Phone Number"}))
-    address = forms.CharField(label="Address")
 
 
 class login_form(forms.Form):

@@ -18,7 +18,8 @@
 <body class="form-v10">
 	<div class="page-content">
 		<div class="form-v10-content">
-			<form class="form-detail" action="POST" method="post" id="myform">
+			<form class="form-detail" action="" method="POST" id="myform">
+				{% csrf_token %}
 				<div class="form-left">
 					<h2>General Infomation</h2>
 					<div class="form-row">
@@ -41,7 +42,7 @@
 						{{form.password1}}
 					</div>
 					<div class="form-row">
-						{{form.password1}}
+						{{form.password2}}
 					</div>
 					<div class="form-date-group">
 						<div class="form-row">
@@ -53,15 +54,14 @@
 				<div class="form-right">
 					<h2>Additional Information</h2>
 					<div class="form-row">
-						<input type="text" name="additional" class="additional" id="additional"
-							placeholder="Credit card" required>
+						{{form.credit_card}}
 					</div>
 					<div class="form-row">
-						<input type="text" name="street" class="street" id="street" placeholder="Street + Nr" required>
+						{{form.street_address}}
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="text" name="zip" class="zip" id="zip" placeholder="Zip Code" required>
+							{{form.zip_code}}
 						</div>
 						<div class="form-row form-row-2">
 							<select name="place">
@@ -76,32 +76,20 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<select name="District">
-							<option value="---">District</option>
-							<option value="Dhaka">Dhaka</option>
-							<option value="Rajsahi">Rajsahi</option>
-							<option value="Chittagong">Chittagong</option>
-							<option value="Barishal">Barishal</option>
-							<option value="Sylhet">Sylhet</option>
-						</select>
+						{{form.district}}
 						<span class="select-btn">
 							<i class="zmdi zmdi-chevron-down"></i>
 						</span>
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<select name="Phone">
-								<option value="---">Phone</option>
-								<option value="01">01</option>
-								<option value="02">02</option>
-							</select>
+							{{form.phone_type}}
 							<span class="select-btn">
 								<i class="zmdi zmdi-chevron-down"></i>
 							</span>
 						</div>
 						<div class="form-row form-row-2">
-							<input type="text" name="phone" class="phone" id="phone" placeholder="Phone Number"
-								required>
+							{{form.phone}}
 						</div>
 					</div>
 					<div class="form-checkbox">
