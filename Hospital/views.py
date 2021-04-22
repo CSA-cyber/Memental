@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 
 # Create your views here.
@@ -24,6 +24,7 @@ def doctor(request, pk):
 
 def showProfile(request):
     if request.user.is_authenticated:
-        return render(request, 'profile.html')
+        usr = User.objects.get(email=request.user.username)
+        return render(request, 'profile.html', {'usr':usr})
     else:
-        return render(request, 'login.html')
+        return redirect('login')
