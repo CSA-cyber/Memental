@@ -49,3 +49,6 @@ def showProfile(request):
         return render(request, 'profile.html', {'usr':usr})
     else:
         return redirect('login')
+        
+def show_emergency(request):
+    return render(request, 'emergency.html')
