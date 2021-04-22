@@ -9,7 +9,7 @@ class Appointment(models.Model):
     doctor = models.ForeignKey(
         'Hospital.Doctor', verbose_name='doctor', related_name='appointments',on_delete=models.SET_NULL, null=True)
     prescription = models.TextField(blank=True, null=True)
-    disease_details = models.CharField(max_length=255)
+    disease_details = models.CharField(max_length=255, null=True)
     date = models.DateTimeField(default=timezone.now)
     choices = [
         (-1, 'Waiting doctors approval'),

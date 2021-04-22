@@ -1,11 +1,16 @@
+from Hospital.views import doctor
 from .models import Appointment
+from Hospital.forms import create_appointment
 from Hospital.models import Doctor, Patient
+from datetime import datetime
+from dateutil import parser
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils.formats import localize
-import json
+from django.utils import timezone
+from .forms import *
 # Create your views here.
 
 # @login_required
@@ -17,57 +22,41 @@ def payment(request):
 
 # @login_required
 def approval_status(request):
+    print(type(parser.parse('April 1, 2021, 4:37 a.m.')))
+    print((parser.parse('April 1, 2021, 4:37 a.m.').strftime('%Y-%m-%d %H:%M:%S')))
+    print(type(timezone.now()))
     return render(request, 'status.html')
 
 
-def make_appointment(request):
-    appointment = ""
-    if request.user.is_authenticated:
-        email = request.user.email
-        patient = Patient.objects.get(email=email)
-        doctor = Doctor.objects.get(id=1)
-        appointment, created = Appointment.objects.get_or_create(
-            patient=patient, doctor=doctor, disease_details='Fine')
+def make_appointment(request, pk):
+    context = {}
+    if request.method == 'POST':
+        form = create_appointment(request.POST)
+        if form.is_valid():
+            doctor = Doctor.objects.get(id=pk)
+            patient = Patient.objects.get(email=request.user.email)
+            context.update({'prev_form': form.cleaned_data,
+                           'doctor': doctor, 'patient': patient})
 
-    context = {'appointment': appointment}
     return render(request, 'boooking_page.html', context)
 
 
-# def appointment_views(request):
-#     appointments = Appointment.objects.all()
-#     context = {'appointments': appointments, 'amount': len(appointments)}
-#     return render(request, 'appointment.html', context)
-
-
-def checkout(request):
-    if request.user.is_authenticated:
-        patient = request.user.patient
-        doctor = Doctor.objects.get(id=1)
-        appointment, created = Appointment.objects.get_or_create(
-            patient=patient, doctor=doctor, disease_details='Fine')
-    else:
-        appointment = Appointment.objects.get(id=10)
-        time = appointment.date
-        time = localize(time)
-        # import inspect
-        # attrs = inspect.getmembers(time, lambda a:not(inspect.isroutine(a)))
-        # print(attrs)
-        context = {'appointment': appointment, 'time': time}
+def success(request):
+    context = {}
+    if request.method == 'POST' and request.user.is_authenticated:
+        POST = request.POST
+        doctor_id = POST['doctor_id']
+        appointment_date = POST['appointment_date']
+        appointment_date = appointment_date.replace('midnight', '')
+        appointment_time = POST['appointment_time']
+        date = f'{appointment_date}{appointment_time}'
+        date = parser.parse(date)
         
-    return render(request, 'checkout.html', context)
+        patient = Patient.objects.get(email=request.user.email)
+        doctor = Doctor.objects.get(id=doctor_id)
+        
+        Appointment.objects.create(patient=patient, doctor=doctor, prescription=' ', disease_details=' ', date=date)
 
-def update_appointment(request):
-    data = json.loads(request.body)
-    doctorId = data['doctorId']
-    action = data['action']
-    
-    print('Acrion:', action)
-    print('DoctorId:', doctorId)
-    
-    patient = request.user.patient
-    doctor = Doctor.objects.get(id=doctorId)
-    
-    appointment, created = Appointment.objects.get_or_create(
-            patient=patient, doctor=doctor, disease_details='Fine')
-    appointment.save()
-    return JsonResponse('Appointment was added', safe=False)
+        context = {'name_on_card': name_on_card,
+                   'doctor_id': doctor_id, 'appointment_time': appointment_time}
+    return render(request, 'success.html', context)

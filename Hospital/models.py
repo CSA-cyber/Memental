@@ -44,6 +44,14 @@ class Patient(User):
     credit_info = models.CharField(max_length=12,
                                    validators=[MinLengthValidator(12)], blank=True, null=True)
 
+    @property
+    def get_fname(self):
+        return self.name.split()[0]
+
+    @property
+    def get_lname(self):
+        return self.name.split()[-1]
+
 
 class Doctor(User):
     fees = models.FloatField(validators=[MinValueValidator(0)])
@@ -68,6 +76,7 @@ class Doctor(User):
     @property
     def new_fees(self):
         return int(self.fees*1.5+.5)
+    
 
 # class UserMessage(models.Model):
 #     users = models.ForeignKey(
