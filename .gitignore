@@ -5,3 +5,5 @@ Login/migrations/
 Payment/__pycache__/
 Payment/migrations/
 Memental/settings.py
+
+*.pyc
