@@ -42,3 +42,10 @@ def doctor(request, pk):
                'form': form}
     
     return render(request, 'doctor.html', context)
+
+def showProfile(request):
+    if request.user.is_authenticated:
+        usr = User.objects.get(email=request.user.username)
+        return render(request, 'profile.html', {'usr':usr})
+    else:
+        return redirect('login')
