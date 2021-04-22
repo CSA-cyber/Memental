@@ -21,3 +21,9 @@ def doctor(request, pk):
     doctor = Doctor.objects.get(id=pk)
     context = {'doctor': doctor}
     return render(request, 'doctor.html', context)
+
+def showProfile(request):
+    if request.user.is_authenticated:
+        return render(request, 'profile.html')
+    else:
+        return render(request, 'login.html')
