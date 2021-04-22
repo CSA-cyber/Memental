@@ -57,6 +57,5 @@ def success(request):
         
         Appointment.objects.create(patient=patient, doctor=doctor, prescription=' ', disease_details=' ', date=date)
 
-        context = {'name_on_card': name_on_card,
-                   'doctor_id': doctor_id, 'appointment_time': appointment_time}
+        context = {'doctor_id': doctor_id, 'appointment_time': appointment_time}
     return render(request, 'success.html', context)
