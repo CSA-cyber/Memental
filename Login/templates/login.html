@@ -13,14 +13,18 @@
 
    <link rel="stylesheet" href="{%static 'css/login.css'%}">
 
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-   <section class="ftco-section">
+   <section class="ftco-section" style="padding-top: 0px;">
       <div class="container">
          <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
-               <h2 class="heading-section">Memental Healthcare Login</h2>
+               <a href="{% url 'index' %}" class="navbar-brand" style="font-family: 'Bangers', cursive; font-size: 30px; color: black;"><span style="font-size: 40px;">M</span>emental</a>
+               <h2 class="heading-section" style="font-size: 23px;">Login</h2>
             </div>
          </div>
          <div class="row justify-content-center">

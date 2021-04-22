@@ -11,6 +11,8 @@
 </body>
 </html> -->
      <!-- PRE LOADER -->
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
      <section class="preloader">
         <div class="spinner">
 
@@ -52,7 +54,7 @@
                   </button>
 
                   <!-- lOGO TEXT HERE -->
-                  <a href="{% url 'index' %}" class="navbar-brand"><i class="fa fa-m-square"></i>emental</a>
+                  <a href="{% url 'index' %}" class="navbar-brand" style="font-family: 'Bangers', cursive; font-size: 30px;"><span style="font-size: 40px;">M</span>emental</a>
              </div>
 
              <!-- MENU LINKS -->
@@ -64,6 +66,7 @@
                        <li><a href="#news" class="smoothScroll">News</a></li>
                        <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                   {% if user.is_authenticated %}
+                            <li><a href="#" style="padding: 30% 0%;"><img src="../../static/images/user.svg" style="height: 30px; width: 30px;"></a></li>
                             <li class="login-btn logout"><a href="{% url 'logout' %}">Logout</a></li>
                   {% else %}
                             <li class="login-btn"><a href="{% url 'login' %}">Login</a></li>
