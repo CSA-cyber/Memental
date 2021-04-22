@@ -4,4 +4,4 @@ Login/__pycache__/
 Login/migrations/
 Payment/__pycache__/
 Payment/migrations/
-settings.py
+Memental/settings.py
