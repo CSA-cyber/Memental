@@ -76,7 +76,8 @@ class Doctor(User):
     @property
     def new_fees(self):
         return int(self.fees*1.5+.5)
-    
+
+
 
 # class UserMessage(models.Model):
 #     users = models.ForeignKey(
@@ -92,3 +93,21 @@ class Doctor(User):
 
 #     def __str__(self):
 #         return self.user.name
+
+class Emergency_Cabin(models.Model):
+    hospital_name = models.TextField(blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    city = models.CharField(max_length=255, null=True)
+    contact = models.CharField(max_length=255, null=True)
+    choices = [
+        (0, 'Not Available'),
+        (1, 'Available'),
+    ]
+    availability = models.IntegerField(choices=choices, default=0)
+    fees = models.FloatField(validators=[MinValueValidator(0)])
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.hospital_name)

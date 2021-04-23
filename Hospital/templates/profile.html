@@ -125,18 +125,39 @@
             <h4 style="padding-top:12px;text-align: left;padding-bottom:10px; font-weight:bold">Appointment(s)</h4>
             <div class="table table-hover">
               <table class="table">
-                <tr style="text-align:center">
-                  <th>Doctor</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Approvement</th>
+                <tr style="text-align:center; border-bottom: 0.5px dotted rgb(219, 219, 219);">
+                  <td style="font-size: 18px; font-weight: bold; border: 1px solid rgb(219, 219, 219);">Doctor</td>
+                  <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Disease Details</td>
+                  <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Schedule</td>
+                  <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Approvement Status</td>
+                  <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Prescription</td>
+                  <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Email</td>
+                  <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Contact</td>
+                  <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Fees</td>
                 <tr>
-                  {% for books in booking %}
-                <tr style="text-align:center">
-                  <td>{{books.product}}</td>
-                  <td>{{books.quantity}}</td>
-                  <td>{{books.price}}</td>
-                  <td>{{books.date}}</td>
+                  {% for appointment in appointments %}
+                <tr style="text-align:center; border-bottom: 0.5px dotted rgb(219, 219, 219);">
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">{{appointment.get_doctor_name}}</td>
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">{{appointment.disease_details}}</td>
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);">{{appointment.date}}</td>
+                  <!-- <td>{{appointment.get_approval_status}}</td> -->
+                  {% if appointment.approval is -1 %}
+                  <td style="background-color: rgb(232, 255, 131); border-radius: 10px;">Approval Pending</td>
+                  {% elif appointment.approval is 1 %}
+                  <td style="background-color: rgb(131, 255, 131); border-radius: 10px;">Request Accepted</td>
+                  {% else %}
+                  <td style="color:white;background-color: rgb(255, 95, 95); border-radius: 10px">Request Denied</td>
+                  {% endif %}
+                  <td style="border-right: 1px dashed rgb(219, 219, 219);">{{appointment.prescription}}</td>
+                  {% if appointment.approval is 1 %}
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">{{appointment.get_doctor_email}}</td>
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">{{appointment.get_doctor_phone}}</td>
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">{{appointment.get_doctor_fees}}</td>
+                  {% else %}
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
+                  <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
+                  {% endif %}
                 <tr>
                   {% endfor %}
               </table>

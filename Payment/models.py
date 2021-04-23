@@ -23,3 +23,16 @@ class Appointment(models.Model):
 
     def __str__(self):
         return str(self.id)
+    
+    def get_doctor_name(self):
+        return str(self.doctor.name)
+    
+    def get_doctor_email(self):
+        return str(self.doctor.email)
+        
+    def get_doctor_contact(self):
+        return str(self.doctor.phone)
+
+    def get_doctor_fees(self):
+        return str(self.doctor.fees)
+
