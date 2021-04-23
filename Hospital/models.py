@@ -76,6 +76,17 @@ class Doctor(User):
     @property
     def new_fees(self):
         return int(self.fees*1.5+.5)
+    
+    def address(self):
+        return str(self.address)
+    
+    def spec(self):
+        return str(self.specilization)
+    
+    def phone(self):
+        return str(self.phone)
+    
+
 
 
 
