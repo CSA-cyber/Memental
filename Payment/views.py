@@ -4,7 +4,7 @@ from Hospital.forms import create_appointment
 from Hospital.models import Doctor, Patient
 from datetime import datetime
 from dateutil import parser
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -30,6 +30,9 @@ def approval_status(request):
 
 def make_appointment(request, pk):
     context = {}
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     if request.method == 'POST':
         form = create_appointment(request.POST)
         if form.is_valid():
@@ -51,11 +54,13 @@ def success(request):
         appointment_time = POST['appointment_time']
         date = f'{appointment_date}{appointment_time}'
         date = parser.parse(date)
-        
+
         patient = Patient.objects.get(email=request.user.email)
         doctor = Doctor.objects.get(id=doctor_id)
-        
-        Appointment.objects.create(patient=patient, doctor=doctor, prescription=' ', disease_details=' ', date=date)
 
-        context = {'doctor_id': doctor_id, 'appointment_time': appointment_time}
+        Appointment.objects.create(
+            patient=patient, doctor=doctor, prescription=' ', disease_details=' ', date=date)
+
+        context = {'doctor_id': doctor_id,
+                   'appointment_time': appointment_time}
     return render(request, 'success.html', context)

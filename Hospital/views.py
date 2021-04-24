@@ -25,19 +25,19 @@ def doctor(request, pk):
     context = {}
     form = create_appointment()
     
-    if request.method == 'POST':
-        print('true')
-        form = create_appointment(request.POST)
+    # if request.method == 'POST':
+    #     print('true')
+    #     form = create_appointment(request.POST)
         
-        if not request.user.is_authenticated:
-            return redirect('login')
+    #     if not request.user.is_authenticated:
+    #         return redirect('login')
         
-        if form.is_valid():
-            print(datetime.now())
-            appointment_date = form.cleaned_data['appointment_date']
-            appointment_time = form.cleaned_data['appointment_time']
-            context = {'doctor_id': pk, 'appointment_time': appointment_time}
-            return render(request, 'boooking_page.html', context)
+    #     if form.is_valid():
+    #         print(datetime.now())
+    #         appointment_date = form.cleaned_data['appointment_date']
+    #         appointment_time = form.cleaned_data['appointment_time']
+    #         context = {'doctor_id': pk, 'appointment_time': appointment_time}
+    #         return render(request, 'boooking_page.html', context)
             
     context = {'doctor': doctor,
                'form': form}
