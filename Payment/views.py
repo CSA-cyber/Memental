@@ -62,5 +62,5 @@ def success(request):
             patient=patient, doctor=doctor, prescription=' ', disease_details=' ', date=date)
 
         context = {'doctor_id': doctor_id,
-                   'appointment_time': appointment_time}
+                   'appointment_time': appointment_time, 'user_email': request.user.username}
     return render(request, 'success.html', context)
