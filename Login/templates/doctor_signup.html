@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Sign Up</title>
+	<title>Sign Up - Doctor</title>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
@@ -14,7 +14,7 @@
 	<!-- Main Style Css -->
 	<link rel="stylesheet" href="{%static 'css/signup.css'%}">
 	<link rel="icon" href="../../static/images/mental-icon-2.jpg">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="form-v10">
@@ -23,7 +23,6 @@
 			<form class="form-detail" action="" method="POST" id="myform">
 				{% csrf_token %}
 				<div class="form-left">
-					<p style="padding: 0% 11%; padding-top: 7%; color: rgb(100, 100, 255); text-decoration: none;">Sign Up as a Doctor? <a href="{% url 'doctor_signup' %}" style="text-decoration: none;">Click Here</a></p>
 					<h2>General Infomation</h2>
 					<div class="form-row">
 						<span class="select-btn">
@@ -105,8 +104,8 @@
 					<div class="form-row-last">
 						<input type="submit" name="register" class="register" value="Register">
 					</div>
-					<p style="text-align:right;padding: 0% 11%; color: white; text-decoration: none;"><a href="{% url 'login' %}" style="text-decoration: none; color: white;"><i class="fa fa-arrow-circle-o-left"></i> Go to Login Page</a></p>
-				</div>	
+                    <p style="text-align:right;padding: 0% 11%; color: white; text-decoration: none;"><a href="{% url 'login' %}" style="text-decoration: none; color: white;"><i class="fa fa-arrow-circle-o-left"></i> Go to Login Page</a></p>
+				</div>
 			</form>
 		</div>
 	</div>

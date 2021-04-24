@@ -19,7 +19,7 @@ def login_user(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user = authenticate(request, username=email, password=password)
-            if user:                    
+            if user:
                 login(request, user)
                 if user.is_superuser:
                     return HttpResponseRedirect(reverse('admin:index'))
@@ -49,7 +49,7 @@ def create_account(request):
             fname = form.cleaned_data['fname']
             lname = form.cleaned_data['lname']
             name = f'{fname} {lname}'
-            
+
             email = form.cleaned_data['email']
             if Patient.objects.filter(email=email).exists():
                 messages.info(request, 'Email already exists')
@@ -59,23 +59,27 @@ def create_account(request):
             password2 = form.cleaned_data['password2']
             bdate = form.cleaned_data['bdate']
             credit_card = form.cleaned_data['credit_card']
-            
+
             street_address = form.cleaned_data['street_address']
             zip_code = form.cleaned_data['zip_code']
             district = form.cleaned_data['district']
-            
+
             address = f'{street_address}, {district}-{zip_code}'
-            
+
             phone = form.cleaned_data['phone']
             phone_type = form.cleaned_data['phone_type']
             phone = f'{phone_type}{phone}'
             user = User.objects.create_user(email, email, password1)
             # user.save()
             patient = Patient.objects.create(
-                user=user, name=name, email=email, password=password1, birthdate=bdate, 
+                user=user, name=name, email=email, password=password1, birthdate=bdate,
                 credit_info=credit_card, phone=phone, address=address)
             # patient.save()
             return redirect('login')
 
     context = {'form': form}
     return render(request, 'signup.html', context)
+
+
+def doctor_signup(request):
+    return render(request, 'doctor_signup.html')
