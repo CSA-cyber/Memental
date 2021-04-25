@@ -14,7 +14,21 @@
 	<!-- Main Style Css -->
 	<link rel="stylesheet" href="{%static 'css/signup.css'%}">
 	<link rel="icon" href="../../static/images/mental-icon-2.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		.page-content {
+			background-image: -webkit-linear-gradient(136deg, rgb(189, 149, 226) 0%, rgb(140, 53, 212) 100%);
+		}
+
+		.form-v10-content .form-detail .form-right {
+			background: rgb(140, 53, 212, 1);
+		}
+
+		.form-v10-content .form-detail .form-left h2 {
+			color: rgb(140, 53, 212, 1);
+		}
+	</style>
 </head>
 
 <body class="form-v10">
@@ -51,7 +65,17 @@
 							{{form.bdate}}
 						</div>
 					</div>
-
+					<div class="form-row">
+						{{form.qualifications}}
+					</div>
+					<div class="form-row">
+						{{form.specilization}}
+					</div>
+					<div class="alert alert-warning" role="alert">
+						{% for message in messages %}
+						{{message}}
+						{% endfor %}
+					</div>
 				</div>
 				<div class="form-right">
 					<h2>Additional Information</h2>
@@ -94,6 +118,9 @@
 							{{form.phone}}
 						</div>
 					</div>
+					<div class="form-row">
+						{{form.education}}
+					</div>
 					<div class="form-checkbox">
 						<label class="container">
 							<p>I do accept the <a href="#" class="text">Terms and Conditions</a> of Memental.</p>
@@ -104,7 +131,9 @@
 					<div class="form-row-last">
 						<input type="submit" name="register" class="register" value="Register">
 					</div>
-                    <p style="text-align:right;padding: 0% 11%; color: white; text-decoration: none;"><a href="{% url 'login' %}" style="text-decoration: none; color: white;"><i class="fa fa-arrow-circle-o-left"></i> Go to Login Page</a></p>
+					<p style="text-align:right;padding: 0% 11%; color: white; text-decoration: none;"><a
+							href="{% url 'login' %}" style="text-decoration: none; color: white;"><i
+								class="fa fa-arrow-circle-o-left"></i> Go to Login Page</a></p>
 				</div>
 			</form>
 		</div>

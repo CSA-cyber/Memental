@@ -7908,7 +7908,8 @@ button.bg-dark:focus {
   text-align: justify !important; }
 
 .text-wrap {
-  white-space: normal !important; }
+  white-space: normal !important; 
+}
 
 .text-nowrap {
   white-space: nowrap !important; }
@@ -8203,6 +8204,7 @@ h1, h2, h3, h4, h5,
   background: -o-linear-gradient(315deg, #f75959 0%, #f35587 100%);
   background: linear-gradient(135deg, #f75959 0%, #f35587 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75959', endColorstr='#f35587', GradientType=1 );
+  border-radius: 0 15px 15px 0;
   color: #fff; }
   .text-wrap .text h2 {
     font-weight: 900;
@@ -8210,7 +8212,9 @@ h1, h2, h3, h4, h5,
 
 .login-wrap {
   position: relative;
-  background: #fff; }
+  background: #fff; 
+  border-radius: 15px 0 0 15px;
+}
   .login-wrap h3 {
     font-weight: 300; }
 
