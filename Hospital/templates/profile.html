@@ -57,6 +57,15 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
+                        <h6 class="mb-0">Birthdate</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{usr.birthdate}}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
                         <h6 class="mb-0">Email</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
@@ -92,9 +101,9 @@
                       <div class="col-sm-3">
                         <h6 class="mb-0">Credit Info</h6>
                       </div>
-                      {% if usr.credit_info is not None%}
+                      {% if patient.credit_info is not None%}
                       <div class="col-sm-9 text-secondary"><input name="credit" class="form-control" type="text"
-                          placeholder="{{usr.credit_info}}" style="height:35px"></div>
+                          placeholder="{{patient.credit_info}}" style="height:35px"></div>
                       {% else %}
                       <div class="col-sm-9 text-secondary"><input name="credit" class="form-control" type="text"
                           placeholder="Not provided yet" style="height:35px"></div>

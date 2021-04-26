@@ -38,9 +38,10 @@ def show_profile(request):
         email = request.user.username
         try:
             patient_id = Patient.objects.get(email=email).id
+            patient = Patient.objects.get(email=email)
             appointments = Payment.models.Appointment.objects.filter(
                 patient_id=patient_id)
-            return render(request, 'profile.html', {'usr': usr, 'appointments': appointments})
+            return render(request, 'profile.html', {'usr': usr, 'appointments': appointments, 'patient': patient})
         except:
             patient_id = Doctor.objects.get(email=email).id
             doctor = Doctor.objects.get(email=email)

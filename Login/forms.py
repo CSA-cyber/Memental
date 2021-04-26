@@ -30,12 +30,15 @@ class patient_create_form(forms.Form):
         {'name': "street", 'class': "street", 'id': "street", 'placeholder': "House + Street Number"}))
     zip_code = forms.IntegerField(widget=forms.TextInput(
         {'name': "zip", 'class': "zip", 'id': "zip", 'placeholder': "Zip Code"}))
-    district = forms.ChoiceField(choices=[('', 'District'),
+    district = forms.ChoiceField(choices=[('', 'Division'),
                                           ('Dhaka', 'Dhaka'),
-                                          ('Rajsahi', 'Rajsahi'),
+                                          ('Rajshahi', 'Rajshahi'),
                                           ('Chittagong', 'Chittagong'),
                                           ('Barishal', 'Barishal'),
-                                          ('Sylhet', 'Sylhet')
+                                          ('Sylhet', 'Sylhet'),
+                                          ('Khulna', 'Khulna'),
+                                          ('Rangpur', 'Rangpur'),
+                                          ('Mymensingh', 'Mymensingh'),
                                           ])
     phone_type = forms.ChoiceField(choices=[('+88', 'Phone'),
                                             ('', 'Telephone')
@@ -72,12 +75,15 @@ class doctor_create_form(forms.Form):
         {'name': "zip", 'class': "zip", 'id': "zip", 'placeholder': "Zip Code"}))
     fees = forms.FloatField(widget=forms.TextInput(
         attrs={'type': "number", 'placeholder': "Fees"}))
-    district = forms.ChoiceField(choices=[('', 'District'),
+    district = forms.ChoiceField(choices=[('', 'Division'),
                                           ('Dhaka', 'Dhaka'),
-                                          ('Rajsahi', 'Rajsahi'),
+                                          ('Rajshahi', 'Rajshahi'),
                                           ('Chittagong', 'Chittagong'),
                                           ('Barishal', 'Barishal'),
-                                          ('Sylhet', 'Sylhet')
+                                          ('Sylhet', 'Sylhet'),
+                                          ('Khulna', 'Khulna'),
+                                          ('Rangpur', 'Rangpur'),
+                                          ('Mymensingh', 'Mymensingh'),
                                           ])
     phone_type = forms.ChoiceField(choices=[('+88', 'Phone'),
                                             ('', 'Telephone')

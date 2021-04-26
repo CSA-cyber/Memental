@@ -131,6 +131,7 @@ def doctor_signup(request):
 
             street_address = form.cleaned_data['street_address']
             zip_code = form.cleaned_data['zip_code']
+            fees = form.cleaned_data['fees']
             district = form.cleaned_data['district']
 
             address = f'{street_address}, {district}-{zip_code}'
@@ -142,7 +143,7 @@ def doctor_signup(request):
             specilization = form.cleaned_data['specilization']
             user = User.objects.create_user(email, email, password1)
             # user.save()
-            Doctor.objects.create(user=user, name=name, email=email, password=password1, birthdate=bdate, credit_info=credit_card,
+            Doctor.objects.create(user=user, name=name, email=email, password=password1, birthdate=bdate, credit_info=credit_card, fees=fees,
                                   phone=phone, address=address, qualifications=qualifications, specilization=specilization, education=education)
             messages.success(request, 'Account created. Wait for approval.')
 
