@@ -90,16 +90,9 @@
 							{{form.zip_code}}
 						</div>
 						<div class="form-row form-row-2">
-							<select name="place">
-								<option value="place">Place</option>
-								<option value="Street">Street</option>
-								<option value="District">District</option>
-								<option value="City">City</option>
-							</select>
-							<span class="select-btn">
-								<i class="zmdi zmdi-chevron-down"></i>
-							</span>
+							{{form.fees}}
 						</div>
+						
 					</div>
 					<div class="form-row">
 						{{form.district}}
@@ -118,8 +111,10 @@
 							{{form.phone}}
 						</div>
 					</div>
-					<div class="form-row">
-						{{form.education}}
+					<div class="form-group">
+						<div class="form-row form-row-1" style="color: white;">
+							{{form.education}}
+						</div>
 					</div>
 					<div class="form-checkbox">
 						<label class="container">

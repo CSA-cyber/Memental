@@ -37,9 +37,8 @@ class patient_create_form(forms.Form):
                                           ('Barishal', 'Barishal'),
                                           ('Sylhet', 'Sylhet')
                                           ])
-    phone_type = forms.ChoiceField(choices=[('', 'Phone'),
-                                            ('01', '01'),
-                                            ('02', '02')
+    phone_type = forms.ChoiceField(choices=[('+88', 'Phone'),
+                                            ('', 'Telephone')
                                             ])
     phone = forms.CharField(label="Phone no", widget=forms.TextInput(attrs={
                             'name': "phone", 'class': 'phone', 'id': "phone", 'placeholder': "Phone Number"}))
@@ -71,6 +70,8 @@ class doctor_create_form(forms.Form):
         {'name': "street", 'class': "street", 'id': "street", 'placeholder': "House + Street Number"}))
     zip_code = forms.IntegerField(widget=forms.TextInput(
         {'name': "zip", 'class': "zip", 'id': "zip", 'placeholder': "Zip Code"}))
+    fees = forms.FloatField(widget=forms.TextInput(
+        attrs={'type': "number", 'placeholder': "Fees"}))
     district = forms.ChoiceField(choices=[('', 'District'),
                                           ('Dhaka', 'Dhaka'),
                                           ('Rajsahi', 'Rajsahi'),
@@ -78,9 +79,8 @@ class doctor_create_form(forms.Form):
                                           ('Barishal', 'Barishal'),
                                           ('Sylhet', 'Sylhet')
                                           ])
-    phone_type = forms.ChoiceField(choices=[('', 'Phone'),
-                                            ('01', '01'),
-                                            ('02', '02')
+    phone_type = forms.ChoiceField(choices=[('+88', 'Phone'),
+                                            ('', 'Telephone')
                                             ])
     phone = forms.CharField(label="Phone no", widget=forms.TextInput(attrs={
                             'name': "phone", 'class': 'phone', 'id': "phone", 'placeholder': "Phone Number"}))

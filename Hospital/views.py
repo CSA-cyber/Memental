@@ -43,9 +43,10 @@ def show_profile(request):
             return render(request, 'profile.html', {'usr': usr, 'appointments': appointments})
         except:
             patient_id = Doctor.objects.get(email=email).id
+            doctor = Doctor.objects.get(email=email)
             appointments = Payment.models.Appointment.objects.filter(
                 doctor_id=patient_id)
-            return render(request, 'profile_doctor.html', {'usr': usr, 'appointments': appointments})
+            return render(request, 'profile_doctor.html', {'usr': usr, 'appointments': appointments, 'doctor': doctor})
     else:
         return redirect('login')
 
