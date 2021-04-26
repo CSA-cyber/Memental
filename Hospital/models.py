@@ -54,13 +54,16 @@ class Patient(User):
 
 
 class Doctor(User):
-    fees = models.FloatField(validators=[MinValueValidator(0)])
+    credit_info = models.CharField(max_length=12,
+                                   validators=[MinLengthValidator(12)], blank=True, null=True)
+    fees = models.FloatField(validators=[MinValueValidator(0)], default=0)
     qualifications = models.TextField()
-    edutation = models.TextField(blank=True, null=True)
+    education = models.TextField(blank=True, null=True)
     availability = models.BooleanField(default=False)
     desc = models.TextField(blank=True)
     specilization = models.CharField(max_length=255)
     image = models.ImageField(upload_to='doctors/', null=True, blank=True)
+    verified = models.BooleanField(default=False)
 
     @property
     def get_img(self):

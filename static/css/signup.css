@@ -151,6 +151,31 @@ body {
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
 }
+.form-v10-content .form-detail textarea {
+  width: 100%;
+  height: 75px;
+  padding: 11.5px 15px 15px 15px;
+  border: 1px solid transparent;
+  border-bottom-color: #ccc;
+  background: transparent;
+  appearance: unset;
+  -moz-appearance: unset;
+  -webkit-appearance: unset;
+  -o-appearance: unset;
+  -ms-appearance: unset;
+  outline: none;
+  -moz-outline: none;
+  -webkit-outline: none;
+  -o-outline: none;
+  -ms-outline: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
 .form-v10-content .form-detail select {
   background: 0 0;
   position: relative;
@@ -259,6 +284,12 @@ body {
 .form-v10-content .form-detail .form-checkbox p {
   margin-left: 34px;
   color: #e5e5e5;
+  font-size: 14px;
+  font-weight: 400;
+}
+.form-v10-content .form-detail .form-left .doctor-signup{
+  text-decoration: none;
+  color: #2271dd;;
   font-size: 14px;
   font-weight: 400;
 }
