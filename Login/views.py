@@ -16,7 +16,7 @@ def login_user(request):
     if request.user.is_authenticated:
         messages.info(request, 'You are alerady logged in.')
         return redirect('index')
-    
+
     if request.method == 'POST':
         form = login_form(request.POST)
         if form.is_valid():
@@ -24,12 +24,15 @@ def login_user(request):
             password = form.cleaned_data['password']
             user = authenticate(request, username=email, password=password)
             if user:
-                doctor = Doctor.objects.get(user=user)
-                if doctor:
-                    if not doctor.verified:
-                        messages.warning(
-                            request, "Need adminstration approval to continue.")
-                        return redirect('login')
+                try:
+                    doctor = Doctor.objects.get(user=user)
+                    if doctor:
+                        if not doctor.verified:
+                            messages.warning(
+                                request, "Need adminstration approval to login.")
+                            return redirect('login')
+                except:
+                    ...
 
                 login(request, user)
                 if user.is_superuser:
@@ -48,9 +51,9 @@ def logout_user(request):
     if not request.user.is_authenticated:
         messages.info(request, 'You are not logged in.')
         return redirect('index')
-    
+
     logout(request)
-    messages.success(request, 'user logged out')
+    messages.success(request, 'Thank you for using our service!')
     return render(request, 'index.html')
 
 
@@ -72,11 +75,11 @@ def create_account(request):
 
             password1 = form.cleaned_data['password1']
             password2 = form.cleaned_data['password2']
-            
+
             if password1 != password2:
                 messages.warning(request, "Passwords don't match")
                 return redirect('signup')
-            
+
             bdate = form.cleaned_data['bdate']
             credit_card = form.cleaned_data['credit_card']
 

@@ -79,18 +79,15 @@ class Doctor(User):
     @property
     def new_fees(self):
         return int(self.fees*1.5+.5)
-    
+
     def address(self):
         return str(self.address)
-    
+
     def spec(self):
         return str(self.specilization)
-    
+
     def phone(self):
         return str(self.phone)
-    
-
-
 
 
 # class UserMessage(models.Model):
@@ -119,7 +116,7 @@ class Emergency_Cabin(models.Model):
     ]
     availability = models.IntegerField(choices=choices, default=0)
     fees = models.FloatField(validators=[MinValueValidator(0)])
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

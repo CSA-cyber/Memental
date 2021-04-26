@@ -36,10 +36,16 @@ def show_profile(request):
     if request.user.is_authenticated:
         usr = User.objects.get(email=request.user.username)
         email = request.user.username
-        patient_id = Patient.objects.get(email=email).id
-        appointments = Payment.models.Appointment.objects.filter(
-            patient_id=patient_id)
-        return render(request, 'profile.html', {'usr': usr, 'appointments': appointments})
+        try:
+            patient_id = Patient.objects.get(email=email).id
+            appointments = Payment.models.Appointment.objects.filter(
+                patient_id=patient_id)
+            return render(request, 'profile.html', {'usr': usr, 'appointments': appointments})
+        except:
+            patient_id = Doctor.objects.get(email=email).id
+            appointments = Payment.models.Appointment.objects.filter(
+                doctor_id=patient_id)
+            return render(request, 'profile_doctor.html', {'usr': usr, 'appointments': appointments})
     else:
         return redirect('login')
 
