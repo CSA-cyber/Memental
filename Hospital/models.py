@@ -41,8 +41,7 @@ class User(PolymorphicModel):
 
 
 class Patient(User):
-    credit_info = models.CharField(max_length=12,
-                                   validators=[MinLengthValidator(12)], blank=True, null=True)
+    credit_info = models.CharField(max_length=12, validators=[MinLengthValidator(12)], blank=True, null=True)
 
     @property
     def get_fname(self):

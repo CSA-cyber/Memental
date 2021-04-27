@@ -11,28 +11,25 @@ from .forms import *
 
 
 def login_user(request):
-    form = login_form()
+    form = LoginForm()
     context = {}
     if request.user.is_authenticated:
         messages.info(request, 'You are alerady logged in.')
         return redirect('index')
 
     if request.method == 'POST':
-        form = login_form(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             user = authenticate(request, username=email, password=password)
             if user:
-                try:
+                if Doctor.objects.filter(user=user).exists():
                     doctor = Doctor.objects.get(user=user)
-                    if doctor:
-                        if not doctor.verified:
-                            messages.warning(
-                                request, "Need adminstration approval to login.")
-                            return redirect('login')
-                except:
-                    ...
+                    if not doctor.verified:
+                        messages.warning(
+                            request, "Need adminstration approval to continue.")
+                        return redirect('login')
 
                 login(request, user)
                 if user.is_superuser:
@@ -58,11 +55,11 @@ def logout_user(request):
 
 
 def create_account(request):
-    form = patient_create_form()
+    form = PatientCreateForm()
 
     if request.method == 'POST':
-        form = patient_create_form(request.POST)
-
+        form = PatientCreateForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             fname = form.cleaned_data['fname']
             lname = form.cleaned_data['lname']
@@ -91,7 +88,6 @@ def create_account(request):
 
             phone = form.cleaned_data['phone']
             phone_type = form.cleaned_data['phone_type']
-            phone = f'{phone_type}{phone}'
             user = User.objects.create_user(email, email, password1)
 
             Patient.objects.create(user=user, name=name, email=email, password=password1,
@@ -100,16 +96,18 @@ def create_account(request):
             messages.success(request, 'Account created')
 
             return redirect('login')
+        else:
+            messages.error(request, 'Invalid Credentials')
 
     context = {'form': form}
     return render(request, 'signup.html', context)
 
 
 def doctor_signup(request):
-    form = doctor_create_form()
+    form = DoctorCreateForm()
 
     if request.method == 'POST':
-        form = doctor_create_form(request.POST)
+        form = DoctorCreateForm(request.POST)
 
         if form.is_valid():
             print('valid form')

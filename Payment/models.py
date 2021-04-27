@@ -44,3 +44,11 @@ class Appointment(models.Model):
 
     def get_patient_contact(self):
         return str(self.patient.phone)
+
+    @property
+    def needs_approval(self):
+        return self.approval == -1
+    
+    @property
+    def choice(self):
+        return self.choices[self.approval+1][1]

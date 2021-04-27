@@ -1,6 +1,6 @@
 from Hospital.views import doctor
 from .models import Appointment
-from Hospital.forms import create_appointment
+from Hospital.forms import CreateAppointment
 from Hospital.models import Doctor, Patient
 from datetime import datetime
 from dateutil import parser
@@ -34,7 +34,7 @@ def make_appointment(request, pk):
         return redirect('login')
 
     if request.method == 'POST':
-        form = create_appointment(request.POST)
+        form = CreateAppointment(request.POST)
         if form.is_valid():
             doctor = Doctor.objects.get(id=pk)
             patient = Patient.objects.get(email=request.user.email)
