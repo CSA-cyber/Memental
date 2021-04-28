@@ -12,7 +12,7 @@
   <meta name="author" content="Tooplate">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/table.css' %}">
   {% include 'importcss.html' %}
 
 </head>
@@ -192,88 +192,63 @@
 
   <!-- NEWS -->
   <section id="news" data-stellar-background-ratio="2.5">
-    <div class="container" style="display: block; background-color: white; border-radius:10px;">
+    <div class="container .appointment-table">
 
       <div class="table table-hover">
         <table class="table">
-          <tr style="text-align:center; border-bottom: 0.5px dotted rgb(219, 219, 219);">
-            <td style="font-size: 18px; font-weight: bold; border: 1px solid rgb(219, 219, 219);">Patient</td>
-            <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Schedule</td>
-            <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Appointment Status
-            </td>
-            <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Prescription</td>
-            <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Email</td>
-            <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);">Contact</td>
-            <td style="font-size: 18px; font-weight: bold;border: 1px solid rgb(219, 219, 219);"></td>
           <tr>
-            {% for appointment in appointments %}
-            {% if appointment.needs_approval %}
-            <form action="" method="POST">
-              {% csrf_token %}
-          <tr style="text-align:center; border-bottom: 0.5px dotted rgb(219, 219, 219);">
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
+            <th>Patient</th>
+            <th>Schedule</th>
+            <th>Appointment Status</th>
+            <th>Prescription</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th></th>
+          </tr>
+          {% for appointment in appointments %}
+          {% if appointment.needs_approval or appointment.is_approved %}
+          <form action="" method="POST">
+            {% csrf_token %}
+            <tr>
+              <td>{{appointment.get_patient_name}}</td>
+              <td class="dash-l-r">{{appointment.date}}</td>
+              <td>
+                {% if appointment.is_approved %}
+                {{appointment.choice}}
+                {% else %}
+                {{approve_form.approval}}
+                {% endif %}
+                <input type="number" name="appointment_id" value="{{appointment.id}}"
+                  style="max-width: 0px; opacity: 0;" readonly>
+              </td>
+              <td class="dash-l-r">
+                {{prescription_form.prescription}}
+              </td>
+              <td>{{appointment.get_patient_email}}</td>
+              <td class="dash-l-r">{{appointment.get_patient_contact}}</td>
+              <td>
+                <span class="select-btn">
+                  <button class="button">Save</button>
+                </span>
+              </td>
+              </td>
+            </tr>
+          </form>
+          {% else %}
+          <tr>
+            <td>
               {{appointment.get_patient_name}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);">{{appointment.date}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-
-              {{approve_form.approval}}
-              <input type="number" name="appointment_id" value="{{appointment.id}}" style="max-width: 0px; opacity: 0;"
-                readonly>
+            <td class="dash-l-r">{{appointment.date}}</td>
+            <td>{{appointment.choice}}</td>
+            <td class="dash-l-r">
+              <!-- {{prescription_form.prescription}} -->
             </td>
-            <td style="border-right: 1px dashed rgb(219, 219, 219);">
-              <input type="text" placeholder="Write Prescription" maxlength="255"
-                style="height: 50px; width: 200px; border: none; border-radius: 10px;color: black; background-color: rgb(224, 224, 224); text-align: center; padding:2px;">
-            </td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-              {{appointment.get_patient_email}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed #dbdbdb;">
-              {{appointment.get_patient_contact}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-              <style>
-                .button {
-                  border-radius: 05px;
-                  border: none;
-                  padding: 10px 20px;
-                  margin-right: 2px;
-                  background-color: #a5c422;
-                  color: white;
-                  transition: all 0.5s;
-                }
-
-                .button:hover {
-                  background-color: rgb(99, 243, 159);
-                }
-              </style>
-              <span class="select-btn">
-                <button class="button">Save</button>
-              </span>
-            </td>
-            </td>
-          <tr>
-            </form>
-            {% else %}
-          <tr style="text-align:center; border-bottom: 0.5px dotted rgb(219, 219, 219);">
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-              {{appointment.get_patient_name}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);">{{appointment.date}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-
-              {{appointment.choice}}
-            </td>
-            <td style="border-right: 1px dashed rgb(219, 219, 219);">
-              <input type="text" placeholder="Write Prescription" maxlength="255"
-                style="height: 50px; width: 200px; border: none; border-radius: 10px;color: black; background-color: rgb(224, 224, 224); text-align: center; padding:2px;">
-            </td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-              {{appointment.get_patient_email}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed #dbdbdb;">
-              {{appointment.get_patient_contact}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-            </td>
-            </td>
-          <tr>
-            {% endif %}
-            {% endfor %}
+            <td>{{appointment.get_patient_email}}</td>
+            <td class="dash-l-r">{{appointment.get_patient_contact}}</td>
+            <td></td>
+          </tr>
+          {% endif %}
+          {% endfor %}
         </table>
       </div>
     </div>

@@ -12,7 +12,8 @@
   <meta name="author" content="Tooplate">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
   {% include 'importcss.html' %}
 
 </head>
@@ -54,7 +55,7 @@
                   <h6 class="mb-0">Full Name</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  {{patient.name}}
+                  {{form.fullname}}
                 </div>
               </div>
               <hr>
@@ -72,7 +73,7 @@
                   <h6 class="mb-0">Email</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  {{patient.email}}
+                  {{form.email}}
                 </div>
               </div>
               <hr>
@@ -154,9 +155,9 @@
           <tr>
             {% for appointment in appointments %}
           <tr style="text-align:center; border-bottom: 0.5px dotted rgb(219, 219, 219);">
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
+            <td class="dash-l-r">
               {{appointment.get_doctor_name}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
+            <td class="dash-l-r">
               {{appointment.disease_details}}</td>
             <td style="border-left: 1px dashed rgb(219, 219, 219);">{{appointment.date}}</td>
             <!-- <td>{{appointment.get_approval_status}}</td> -->
@@ -171,7 +172,7 @@
               {% if appointment.approval is 1 and appointment.prescription != '' %}
               <a href="{% url 'generate_prescription' appointment.id %}">
                 <style>
-                  .btn{
+                  .btn {
                     background: #a5c422;
                     border-radius: 3px;
                     color: #ffffff;
@@ -181,7 +182,8 @@
                     margin: 2px 0px;
                     transition: all 0.5s;
                   }
-                  .btn:hover{
+
+                  .btn:hover {
                     background: #4267b2;
                     color: #ffffff !important;
                   }
@@ -195,16 +197,16 @@
               {% endif %}
             </td>
             {% if appointment.approval is 1 %}
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
+            <td class="dash-l-r">
               {{appointment.get_doctor_email}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
+            <td class="dash-l-r">
               {{appointment.get_doctor_phone}}</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
+            <td class="dash-l-r">
               {{appointment.get_doctor_fees}}৳</td>
             {% else %}
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
-            <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
+            <td class="dash-l-r">---</td>
+            <td class="dash-l-r">---</td>
+            <td class="dash-l-r">---</td>
             {% endif %}
           <tr>
             {% endfor %}

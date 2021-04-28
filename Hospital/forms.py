@@ -19,8 +19,13 @@ class CreateAppointment(forms.Form):
 
 
 class UpdateInfo(forms.Form):
+    fullname = forms.CharField(widget=forms.TextInput(
+        {'class': 'form-control'}), required=not True)
+    email = forms.CharField(widget=forms.TextInput(
+        {'class': 'form-control'}), required=not True)
     phone = forms.CharField(widget=forms.TextInput({'class': 'form-control'}))
-    address = forms.CharField(label="Address", widget=forms.TextInput({'class': 'form-control'}))
+    address = forms.CharField(
+        label="Address", widget=forms.TextInput({'class': 'form-control'}))
     credit_card = forms.CharField(label="Credit Card", widget=forms.TextInput(
         {'class': 'form-control'}), required=not True)
     password0 = forms.CharField(label="Password", widget=forms.PasswordInput({
@@ -29,7 +34,7 @@ class UpdateInfo(forms.Form):
         'class': 'form-control',   'placeholder': 'Update Password'}), required=not True)
     password2 = forms.CharField(label="Password", widget=forms.PasswordInput({
         'class': 'form-control', 'placeholder': 'Re-Enter Password'}), required=not True)
-    
+
 
 class UpdateDoctorForm(UpdateInfo):
     fees = forms.FloatField(widget=forms.NumberInput())
@@ -37,9 +42,10 @@ class UpdateDoctorForm(UpdateInfo):
     education = forms.CharField(widget=forms.Textarea())
     desc = forms.CharField(widget=forms.Textarea())
     availability = forms.BooleanField(required=not True)
-    specilization = forms.CharField(widget=forms.TextInput({'class': 'form-control'}))
-    
-    
+    specilization = forms.CharField(
+        widget=forms.TextInput({'class': 'form-control'}))
+
+
 class ApproveForm(forms.Form):
     choices = [
         ('', 'Approval Needed'),
@@ -47,4 +53,8 @@ class ApproveForm(forms.Form):
         (1, 'Approved'),
     ]
     approval = forms.ChoiceField(choices=choices)
-    
+
+
+class PrescriptionForm(forms.Form):
+    prescription = forms.CharField(widget=forms.Textarea(
+        {'id': 'prescribe', 'placeholder': 'Prescribe'}), required=not True)

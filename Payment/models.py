@@ -47,7 +47,11 @@ class Appointment(models.Model):
 
     @property
     def needs_approval(self):
-        return self.approval == 1 or self.approval == -1
+        return self.approval == -1
+
+    @property
+    def is_approved(self):
+        return self.approval == 1
 
     @property
     def choice(self):

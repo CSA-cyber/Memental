@@ -2,22 +2,17 @@ from django.shortcuts import redirect, render
 from .models import *
 from datetime import datetime
 from .forms import *
-from django.template import RequestContext
+from django.contrib import messages
 from Payment.models import Appointment
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from Memental import settings
 from django.http import HttpResponse
-from reportlab.lib.units import cm
 # Create your views here.
 
 
 def index(request):
     patient = ""
-    if request.user.is_authenticated:
-        email = request.user.email
-
     return render(request, 'index.html', {'patient': patient})
 
 
@@ -44,6 +39,8 @@ def show_profile(request):
         patient = Patient.objects.filter(user=user).first()
         if patient:
             form = UpdateInfo()
+            form.fields['fullname'].widget.attrs['value'] = patient.name
+            form.fields['email'].widget.attrs['value'] = patient.email
             form.fields['phone'].widget.attrs['value'] = patient.phone
             form.fields['credit_card'].widget.attrs['value'] = patient.credit_info
             form.fields['address'].widget.attrs['value'] = patient.address
@@ -51,6 +48,8 @@ def show_profile(request):
             if request.method == 'POST':
                 form = UpdateInfo(request.POST)
                 if form.is_valid():
+                    patient.name = form.cleaned_data['fullname']
+                    patient.email = form.cleaned_data['email']
                     patient.phone = form.cleaned_data['phone']
                     patient.address = form.cleaned_data['address']
                     patient.credit_info = form.cleaned_data['credit_card']
@@ -74,7 +73,8 @@ def show_profile(request):
             doctor = Doctor.objects.get(user=user)
             form = UpdateDoctorForm()
             approve_form = ApproveForm()
-
+            prescription_form = PrescriptionForm()
+            
             form.fields['phone'].widget.attrs['value'] = doctor.phone
             form.fields['credit_card'].widget.attrs['value'] = doctor.credit_info
             form.fields['address'].widget.attrs['value'] = doctor.address
@@ -91,6 +91,8 @@ def show_profile(request):
             if request.method == 'POST':
                 form = UpdateDoctorForm(request.POST)
                 approve_form = ApproveForm(request.POST)
+                prescription_form = PrescriptionForm(request.POST)
+                
                 if form.is_valid():
                     doctor.phone = form.cleaned_data['phone']
                     doctor.address = form.cleaned_data['address']
@@ -119,12 +121,22 @@ def show_profile(request):
                     approval = int(approval)
                     appointment_id = request.POST['appointment_id']
                     appointment_id = int(appointment_id)
-                    print(f'id: {appointment_id} choice: {approval}')
                     appointment = Appointment.objects.get(id=appointment_id)
                     appointment.approval = approval
                     appointment.save()
 
-            return render(request, 'profile_doctor.html', {'doctor': doctor, 'appointments': appointments, 'form': form, 'approve_form': approve_form})
+                elif prescription_form.is_valid():
+                    prescription = prescription_form.cleaned_data['prescription']
+                    appointment_id = request.POST['appointment_id']
+                    appointment_id = int(appointment_id)
+                    appointment = Appointment.objects.get(id=appointment_id)
+                    if appointment.prescription:
+                        messages.error(request, f'You already prescribed {appointment.patient}')
+                    else:
+                        appointment.prescription = prescription
+                        appointment.save()
+
+            return render(request, 'profile_doctor.html', {'doctor': doctor, 'appointments': appointments, 'form': form, 'approve_form': approve_form, 'prescription_form': prescription_form})
     else:
         return redirect('login')
 
