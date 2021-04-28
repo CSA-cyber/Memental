@@ -167,14 +167,40 @@
             {% else %}
             <td style="color:white;background-color: rgb(255, 95, 95); border-radius: 10px">Request Denied</td>
             {% endif %}
-            <td style="border-right: 1px dashed rgb(219, 219, 219);">{{appointment.prescription}}</td>
+            <td style="border-right: 1px dashed rgb(219, 219, 219);">
+              {% if appointment.approval is 1 and appointment.prescription != '' %}
+              <a href="{% url 'generate_prescription' appointment.id %}">
+                <style>
+                  .btn{
+                    background: #a5c422;
+                    border-radius: 3px;
+                    color: #ffffff;
+                    font-weight: 600;
+                    padding-top: 6px;
+                    padding-bottom: 6px;
+                    margin: 2px 0px;
+                    transition: all 0.5s;
+                  }
+                  .btn:hover{
+                    background: #4267b2;
+                    color: #ffffff !important;
+                  }
+                </style>
+                <button class="btn">
+                  Download Prescription
+                </button>
+              </a>
+              {% else %}
+              Prescription is not updated yet.
+              {% endif %}
+            </td>
             {% if appointment.approval is 1 %}
             <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
               {{appointment.get_doctor_email}}</td>
             <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
               {{appointment.get_doctor_phone}}</td>
             <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">
-              {{appointment.get_doctor_fees}}</td>
+              {{appointment.get_doctor_fees}}৳</td>
             {% else %}
             <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
             <td style="border-left: 1px dashed rgb(219, 219, 219);border-right: 1px dashed rgb(219, 219, 219);">---</td>
