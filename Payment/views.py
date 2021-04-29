@@ -20,13 +20,6 @@ def payment(request):
     return render(request, 'payment.html')
 
 
-# @login_required
-def approval_status(request):
-    print(type(parser.parse('April 1, 2021, 4:37 a.m.')))
-    print((parser.parse('April 1, 2021, 4:37 a.m.').strftime('%Y-%m-%d %H:%M:%S')))
-    print(type(timezone.now()))
-    return render(request, 'status.html')
-
 
 def make_appointment(request, pk):
     context = {}
@@ -50,6 +43,7 @@ def success(request):
         POST = request.POST
         doctor_id = POST['doctor_id']
         appointment_date = POST['appointment_date']
+        disease_details = POST['disease_details']
         appointment_date = appointment_date.replace('midnight', '')
         appointment_time = POST['appointment_time']
         date = f'{appointment_date}{appointment_time}'
@@ -59,7 +53,7 @@ def success(request):
         doctor = Doctor.objects.get(id=doctor_id)
 
         Appointment.objects.create(
-            patient=patient, doctor=doctor, prescription=' ', disease_details=' ', date=date)
+            patient=patient, doctor=doctor, prescription=' ', disease_details=disease_details, date=date)
 
         context = {'doctor_id': doctor_id,
                    'appointment_time': appointment_time, 'user_email': request.user.username}

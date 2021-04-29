@@ -12,6 +12,8 @@ from django.http import HttpResponse
 
 
 def index(request):
+    from django.utils.dates import MONTHS
+    print(MONTHS)
     patient = ""
     return render(request, 'index.html', {'patient': patient})
 

@@ -2,6 +2,7 @@ from datetime import date
 from django import forms
 from django.conf import settings
 from django.forms import widgets
+from django.utils.dates import MONTHS
 
 
 # from django.forms import widgets
@@ -12,10 +13,14 @@ from django.forms import widgets
 
 
 class CreateAppointment(forms.Form):
+    m = date.today().month
+    months = {m: MONTHS[m], m+1: MONTHS[m+1]}
     appointment_date = forms.DateTimeField(
-        input_formats=settings.DATE_INPUT_FORMATS, widget=forms.SelectDateWidget(years=[date.today().year]))
+        input_formats=settings.DATE_INPUT_FORMATS, widget=forms.SelectDateWidget(months=months, years=[date.today().year], attrs={'class': 'form-date'}))
     appointment_time = forms.TimeField(widget=forms.TimeInput(
         {'class': 'form-control td-input', 'type': 'time', 'placeholder': 'time'}))
+    disease_details = forms.CharField(widget=forms.TextInput(
+        {'class': 'form-control td-input', 'placeholder': "Disease Details"}))
 
 
 class UpdateInfo(forms.Form):

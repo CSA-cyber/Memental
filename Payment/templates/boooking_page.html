@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 {%load static%}
 <html style="transform: none;" lang="en">
 
@@ -169,7 +169,8 @@
 									<h4>Cancellation policy</h4>
 									<div class="form-group">
 										<div class="checkboxes">
-											<label class="container_check" style="font-size: 15px;">I accept <a href="#0">terms and conditions
+											<label class="container_check" style="font-size: 15px;">I accept <a
+													href="#0">terms and conditions
 													and
 													general policy</a>
 												<input type="checkbox">
@@ -180,11 +181,15 @@
 								</div>
 							</div>
 							<input type="text" name="doctor_id" value="{{doctor.id}}" readonly
-								style="opacity: 0; max-width: 50px;">
+								style="opacity: 0; max-width: 0px;">
 							<input type="text" name="appointment_date" value="{{prev_form.appointment_date}}" readonly
 								style="opacity: 0;">
 							<input type="text" name="appointment_time" value="{{prev_form.appointment_time}}" readonly
 								style="opacity: 0;">
+							<input type="text" name="appointment_time" value="{{prev_form.appointment_time}}" readonly
+								style="opacity: 0; max-width: 0;">
+							<input type="text" name="disease_details" value="{{prev_form.disease_details}}" readonly
+								style="opacity: 0; max-width: 0;">
 						</div>
 						<!-- /col -->
 						<aside class="col-xl-4 col-lg-4" id="sidebar">
@@ -197,6 +202,9 @@
 										<li>Date: <strong class="float-right">{{prev_form.appointment_date}}</strong>
 										</li>
 										<li>Time: <strong class="float-right">{{prev_form.appointment_time}}</strong>
+										</li>
+										<li>Disease Details: <strong
+												class="float-right">{{prev_form.disease_details}}</strong>
 										</li>
 										<li>Dr. Name: <strong class="float-right">{{doctor.name}}</strong></li>
 									</ul>

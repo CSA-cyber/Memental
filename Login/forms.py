@@ -23,7 +23,7 @@ class PatientCreateForm(forms.Form):
         attrs={'name': "company", 'class': "company", 'id': "company", 'placeholder': 'Re-Enter Password'}))
 
     bdate = forms.DateField(
-        label="Birthdate", input_formats=settings.DATE_INPUT_FORMATS, widget=forms.SelectDateWidget(attrs={'class': 'form-date'}, years=[*range(date.today().year)][::-1]))
+        label="Birthdate", input_formats=settings.DATE_INPUT_FORMATS, widget=forms.SelectDateWidget(attrs={'class': 'form-date'}, years=[*range(date.today().year-100, date.today().year)][::-1]))
     credit_card = forms.CharField(label="Credit Card", widget=forms.TextInput(
         {'placeholder': "Credit card"}), required=not True)
     street_address = forms.CharField(widget=forms.TextInput(
@@ -61,7 +61,7 @@ class DoctorCreateForm(forms.Form):
         attrs={'name': "company", 'class': "company", 'id': "company", 'placeholder': 'Re-Enter Password'}))
 
     bdate = forms.DateField(
-        label="Birthdate", input_formats=settings.DATE_INPUT_FORMATS, widget=forms.SelectDateWidget(attrs={'class': 'form-date'}, years=[*range(date.today().year)][::-1]))
+        label="Birthdate", input_formats=settings.DATE_INPUT_FORMATS, widget=forms.SelectDateWidget(attrs={'class': 'form-date'}, years=[*range(date.today().year-100, date.today().year-20)][::-1]))
 
     qualifications = forms.CharField(label='Qualifications', widget=forms.Textarea(
         {'name': "qualifications", 'class': "qualifications", 'id': "qualifications", 'placeholder': "List of Qualifications"}))
