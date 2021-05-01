@@ -25,6 +25,15 @@
                 <p style="font-family: 'Courier New', Courier, monospace; font-weight: bold; text-align: left; font-size: 35px;color: black;">{{ doctor.name }}</p>
                 <p class="information" style="font-family: 'Courier New', Courier, monospace; font-weight: bold; text-align: left; font-size: 17px;">{{doctor.specilization}}</p>
                 <p class="information" style="font-family: 'Courier New', Courier, monospace; text-align: left; font-size: 15px;">{{doctor.qualifications}}</p>
+                {% if doctor.verified is False %}
+                <div class="control">
+                    <a href="#">
+                        <button class="btn">
+                            <span class="buy">Unverified</span>
+                        </button>
+                    </a>
+                </div>
+                {% else %}
                 <div class="control">
                     <a href="{% url 'doctor' doctor.id %}">
                         <button class="btn">
@@ -33,6 +42,7 @@
                         </button>
                     </a>
                 </div>
+                {% endif %}
 
             </div>
 
