@@ -130,11 +130,11 @@ def show_profile(request):
                     appointment_id = request.POST['appointment_id']
                     appointment_id = int(appointment_id)
                     appointment = Appointment.objects.get(id=appointment_id)
-                    if appointment.prescription:
-                        messages.error(request, f'You already prescribed {appointment.patient}')
-                    else:
-                        appointment.prescription = prescription
-                        appointment.save()
+                    # if appointment.prescription:
+                    #     messages.error(request, f'You already prescribed {appointment.patient}')
+                    # else:
+                    appointment.prescription = prescription
+                    appointment.save()
 
             return render(request, 'profile_doctor.html', {'doctor': doctor, 'appointments': appointments, 'form': form, 'approve_form': approve_form, 'prescription_form': prescription_form})
     else:

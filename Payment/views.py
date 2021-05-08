@@ -20,7 +20,6 @@ def payment(request):
     return render(request, 'payment.html')
 
 
-
 def make_appointment(request, pk):
     context = {}
     if not request.user.is_authenticated:
@@ -53,7 +52,7 @@ def success(request):
         doctor = Doctor.objects.get(id=doctor_id)
 
         Appointment.objects.create(
-            patient=patient, doctor=doctor, prescription=' ', disease_details=disease_details, date=date)
+            patient=patient, doctor=doctor, disease_details=disease_details, date=date)
 
         context = {'doctor_id': doctor_id,
                    'appointment_time': appointment_time, 'user_email': request.user.username}
